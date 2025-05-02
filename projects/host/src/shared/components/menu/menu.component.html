@@ -27,16 +27,15 @@
         #rlaClientesSelecionados="routerLinkActive"
         >Clientes selecionados</a
       >
-      <a
-        routerLink="/sair"
-        routerLinkActive="text-primary"
-        class="text-decoration-none link-body-emphasis"
-        #rlaSair="routerLinkActive"
-        >Sair</a
+      <button
+        (click)="logout()"
+        class="btn my-0 py-0 text-decoration-none link-body-emphasis"
       >
+        Sair
+      </button>
     </div>
     <div>
-      Olá, <span class="fw-bold"> {{ name }} </span>
+      Olá, <span class="fw-bold"> {{ name | titlecase }} </span>
     </div>
   </div>
 </nav>
@@ -72,7 +71,7 @@
       <ul>
         <li class="list-group-item mb-2">
           <a
-            routerLink="/"
+            routerLink="/home"
             class="text-decoration-none link-body-emphasis d-flex align-items-center gap-2 fs-6"
             routerLinkActive="text-primary"
           >
