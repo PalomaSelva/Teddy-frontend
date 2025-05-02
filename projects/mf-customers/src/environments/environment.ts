@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: 'https://boasorte.teddybackoffice.com.br/',
+  apiUrl: 'https://boasorte.teddybackoffice.com.br',
 };
