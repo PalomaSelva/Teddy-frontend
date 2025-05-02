@@ -6,7 +6,7 @@ import { ModalCreateComponent } from '../modal-create/modal-create.component';
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [CommonModule, ModalCreateComponent],
+  imports: [CommonModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
 })

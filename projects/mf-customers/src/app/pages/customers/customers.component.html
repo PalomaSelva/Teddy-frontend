@@ -1,10 +1,7 @@
 <div class="container-fluid mt-5 px-5">
   <div class="row mb-3">
     <div class="col-12">
-      <h4 class="fw-normal">
-        <span class="fw-bold">16</span>
-        clientes encontrados:
-      </h4>
+      <h4 class="fw-semibold">Lista de clientes</h4>
     </div>
   </div>
   <div class="row gy-4">
@@ -13,7 +10,7 @@
     <app-card class="col-md-4 col-lg-4 col-xl-3 col-2xl-2" [item]="customer" />
     }
   </div>
-  <div class="row mt-3">
+  <div class="row w-100 m-auto mt-3">
     <button
       class="btn btn-outline-primary col-12"
       data-bs-toggle="modal"
@@ -22,12 +19,27 @@
       <i class="fas fa-plus"></i> Criar cliente
     </button>
   </div>
-  <ngb-pagination
-    [collectionSize]="totalPages * itemsPerPage"
-    [(page)]="page"
-    [maxSize]="5"
-    class="d-flex justify-content-center mt-3"
-  />
+  <div class="row mt-3">
+    <div class="col-6 gap-2 d-flex align-items-center">
+      <p style="text-wrap: nowrap" class="p-0 m-0">Itens por página:</p>
+      <select
+        class="form-select"
+        style="width: 80px"
+        aria-label="Default select example"
+        [(ngModel)]="itemsPerPage"
+      >
+        @for (item of [10, 20, 30, 40]; track item) {
+        <option [value]="item">{{ item }}</option>
+        }
+      </select>
+    </div>
+    <ngb-pagination
+      [collectionSize]="totalPages"
+      [(page)]="page"
+      [maxSize]="5"
+      class="d-flex justify-content-end align-items-end col-6"
+    />
+  </div>
 </div>
 
 <div
