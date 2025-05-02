@@ -267,7 +267,13 @@
             },
             "development": {
               "target": "mf-customers:esbuild:development",
-              "dev": true
+              "dev": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/mf-customers/src/environments/environment.ts",
+                  "with": "projects/mf-customers/src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
