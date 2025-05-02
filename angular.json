@@ -56,8 +56,7 @@
               }
             ],
             "styles": [
-              "projects/mf-login/src/styles.scss",
-              "./node_modules/bootstrap/scss/bootstrap.scss"
+              "projects/mf-login/src/styles.scss"
             ],
             "scripts": []
           }
@@ -81,8 +80,7 @@
               }
             ],
             "styles": [
-              "projects/mf-login/src/styles.scss",
-              "./node_modules/bootstrap/scss/bootstrap.scss"
+              "projects/mf-login/src/styles.scss"
             ],
             "scripts": []
           },
@@ -204,8 +202,7 @@
               }
             ],
             "styles": [
-              "projects/host/src/styles.scss",
-              "./node_modules/bootstrap/scss/bootstrap.scss"
+              "projects/host/src/styles.scss"
             ],
             "scripts": []
           },
