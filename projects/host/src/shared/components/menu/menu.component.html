@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container py-3">
+    <div>
+      <button
+        type="button"
+        class="btn"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasWithBothOptions"
+        aria-controls="offcanvasWithBothOptions"
+      >
+        <i class="fa-solid fa-bars fs-4 me-3"></i>
+      </button>
+      <img src="./logo.svg" />
+    </div>
+    <div class="d-flex gap-3">
+      <a
+        routerLink="/customers"
+        routerLinkActive="text-primary"
+        class="text-decoration-none link-body-emphasis"
+        #rlaClientes="routerLinkActive"
+        >Clientes
+      </a>
+      <a
+        routerLink="/selected-customers"
+        routerLinkActive="text-primary"
+        class="text-decoration-none link-body-emphasis"
+        #rlaClientesSelecionados="routerLinkActive"
+        >Clientes selecionados</a
+      >
+      <a
+        routerLink="/sair"
+        routerLinkActive="text-primary"
+        class="text-decoration-none link-body-emphasis"
+        #rlaSair="routerLinkActive"
+        >Sair</a
+      >
+    </div>
+    <div>Olá, <span class="fw-bold"> Usuário </span></div>
+  </div>
+</nav>
+
+<div
+  class="offcanvas offcanvas-start"
+  data-bs-scroll="true"
+  tabindex="-1"
+  id="offcanvasWithBothOptions"
+  aria-labelledby="offcanvasWithBothOptionsLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+      Backdrop with scrolling
+    </h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <p>Try scrolling the rest of the page to see this option in action.</p>
+  </div>
+</div>
