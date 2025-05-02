@@ -5,7 +5,7 @@ import '@angular/localize/init';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomersService } from '../../shared/services/customers/customers.service';
 import { CustomerResponse } from '../../shared/interfaces/customer.interface';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-customers',
   standalone: true,
@@ -35,7 +35,11 @@ export class CustomersComponent {
           this.totalPages = res.totalPages;
         },
         error: (err) => {
-          console.log(err);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.error.message,
+          });
         },
       });
   }

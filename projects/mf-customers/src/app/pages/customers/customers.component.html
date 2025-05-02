@@ -24,7 +24,7 @@
     </button>
   </div>
   <ngb-pagination
-    [collectionSize]="120"
+    [collectionSize]="totalPages * itemsPerPage"
     [(page)]="page"
     [maxSize]="5"
     class="d-flex justify-content-center mt-3"
