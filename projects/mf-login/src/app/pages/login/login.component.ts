@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,9 +17,23 @@ import { RouterLink } from '@angular/router';
 export class LoginComponent {
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.form = this.fb.group({
       name: ['', Validators.required],
     });
+  }
+
+  ngOnInit() {
+    if (localStorage.getItem('name')) {
+      this.router.navigate(['/customers']);
+    }
+  }
+
+  login() {
+    if (this.form.valid) {
+      const { name } = this.form.getRawValue();
+      localStorage.setItem('name', name);
+      this.router.navigate(['/customers']);
+    }
   }
 }
