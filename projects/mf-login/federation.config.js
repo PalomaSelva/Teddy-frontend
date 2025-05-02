@@ -7,7 +7,7 @@ module.exports = withNativeFederation({
   name: "mf-login",
 
   exposes: {
-    "./login": "./projects/mf-login/src/app/app.component.ts",
+    "./Component": "./projects/mf-login/src/app/pages/login/login.component.ts",
   },
 
   shared: {
