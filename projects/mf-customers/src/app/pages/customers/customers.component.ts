@@ -6,10 +6,11 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomersService } from '../../shared/services/customers/customers.service';
 import { CustomerResponse } from '../../shared/interfaces/customer.interface';
 import Swal from 'sweetalert2';
+import { ModalCreateComponent } from '../../shared/components/modal-create/modal-create.component';
 @Component({
   selector: 'app-customers',
   standalone: true,
-  imports: [CardComponent, NgbPaginationModule],
+  imports: [CardComponent, NgbPaginationModule, ModalCreateComponent],
   templateUrl: './customers.component.html',
   styleUrl: './customers.component.scss',
 })

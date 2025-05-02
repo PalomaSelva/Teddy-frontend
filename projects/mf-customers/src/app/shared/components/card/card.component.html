@@ -1,22 +1,23 @@
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title text-center">{{ name }}</h5>
+    <h5 class="card-title text-center">{{ item.name }}</h5>
     <div class="card-info">
       <p class="card-text text-center">
-        <strong>Salário:</strong> R$ {{ salary | number : "1.2-2" }}
+        <strong>Salário:</strong> R$ {{ item.salary | number : "1.2-2" }}
       </p>
       <p class="card-text text-center">
-        <strong>Empresa:</strong> R$ {{ companyValue | number : "1.2-2" }}
+        <strong>Empresa:</strong> R$
+        {{ item.companyValuation | number : "1.2-2" }}
       </p>
     </div>
     <div class="d-flex justify-content-between gap-2">
-      <button class="btn text-success">
+      <button class="btn text-success" (click)="selectCustomer()">
         <i class="fas fa-plus"></i>
       </button>
-      <button class="btn text-dark">
+      <button class="btn text-dark" (click)="openModalEdit(item)">
         <i class="fas fa-pen"></i>
       </button>
-      <button class="btn text-danger">
+      <button class="btn text-danger" (click)="openModalDelete(item)">
         <i class="fas fa-trash"></i>
       </button>
     </div>
