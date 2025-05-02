@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title text-center">{{ name }}</h5>
+    <div class="card-info">
+      <p class="card-text text-center">
+        <strong>Salário:</strong> R$ {{ salary | number : "1.2-2" }}
+      </p>
+      <p class="card-text text-center">
+        <strong>Empresa:</strong> R$ {{ companyValue | number : "1.2-2" }}
+      </p>
+    </div>
+    <div class="d-flex justify-content-between gap-2">
+      <button class="btn text-success">
+        <i class="fas fa-plus"></i>
+      </button>
+      <button class="btn text-dark">
+        <i class="fas fa-pen"></i>
+      </button>
+      <button class="btn text-danger">
+        <i class="fas fa-trash"></i>
+      </button>
+    </div>
+  </div>
+</div>
