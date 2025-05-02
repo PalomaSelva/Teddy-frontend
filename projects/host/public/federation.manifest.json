@@ -1,0 +1,5 @@
+{
+  "mfLogin": "http://localhost:4201/remoteEntry.json",
+  "mfCustomers": "http://localhost:4202/remoteEntry.json",
+  "mfSelectedCustomers": "http://localhost:4203/remoteEntry.json"
+}
