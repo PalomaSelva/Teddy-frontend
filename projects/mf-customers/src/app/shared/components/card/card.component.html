@@ -14,7 +14,12 @@
       <button class="btn text-success" (click)="onEdit.emit(item)">
         <i class="fas fa-plus"></i>
       </button>
-      <button class="btn text-dark" (click)="onEdit.emit(item)">
+      <button
+        class="btn text-dark"
+        (click)="onEdit.emit(item)"
+        data-bs-toggle="modal"
+        data-bs-target="#modalCreate"
+      >
         <i class="fas fa-pen"></i>
       </button>
       <button

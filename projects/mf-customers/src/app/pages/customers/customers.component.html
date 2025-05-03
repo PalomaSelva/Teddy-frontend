@@ -18,6 +18,7 @@
       class="col-md-4 col-lg-4 col-xl-3 col-2xl-2"
       [item]="customer"
       (onDelete)="openDeleteModal($event)"
+      (onEdit)="openEditModal($event)"
     />
     }
   </div>
@@ -26,6 +27,7 @@
       class="btn btn-outline-primary col-12"
       data-bs-toggle="modal"
       data-bs-target="#modalCreate"
+      (click)="openCreateModal()"
     >
       <i class="fas fa-plus"></i> Criar cliente
     </button>
@@ -60,7 +62,10 @@
   aria-labelledby="modalCreateLabel"
   aria-hidden="true"
 >
-  <app-modal-create (saveCustomer)="createCustomer($event)" />
+  <app-modal-create
+    [customerToEdit]="selectedCustomer || null"
+    (saveCustomer)="handleSaveCustomer($event)"
+  />
 </div>
 
 <!-- Modal de exclusão -->

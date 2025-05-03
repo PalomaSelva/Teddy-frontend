@@ -77,6 +77,41 @@ export class CustomersComponent implements OnInit {
     this.selectedCustomer = customer;
   }
 
+  openEditModal(customer: CustomerResponse): void {
+    this.selectedCustomer = customer;
+  }
+
+  openCreateModal(): void {
+    this.modalCreate.resetData();
+  }
+
+  handleSaveCustomer(customer: CustomerRequest): void {
+    if (this.selectedCustomer) {
+      this.updateCustomer(this.selectedCustomer.id, customer);
+    } else {
+      this.createCustomer(customer);
+    }
+  }
+
+  updateCustomer(id: number, customer: CustomerRequest): void {
+    this.spinner.show();
+    this._customersService.updateCustomer(customer, id).subscribe({
+      next: () => {
+        this.spinner.hide();
+        this.modalCreate.closeModal();
+        this.alertService.success('Cliente atualizado com sucesso');
+        this.getCustomers();
+      },
+      error: (error: HttpErrorResponse) => {
+        this.spinner.hide();
+        this.alertService.error(
+          'Erro ao atualizar cliente',
+          error.error.message
+        );
+      },
+    });
+  }
+
   createCustomer(customer: CustomerRequest): void {
     this.spinner.show();
     this._customersService.createCustomer(customer).subscribe({

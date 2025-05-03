@@ -1,7 +1,9 @@
 <div class="modal-dialog modal-dialog-centered">
   <div class="modal-content">
     <div class="modal-header">
-      <h1 class="modal-title fs-5" id="exampleModalLabel">Criar cliente</h1>
+      <h1 class="modal-title fs-5" id="exampleModalLabel">
+        {{ isEditMode ? "Editar cliente" : "Criar cliente" }}
+      </h1>
       <button
         type="button"
         class="btn-close"
@@ -41,9 +43,9 @@
         type="button"
         class="btn btn-primary text-white"
         [disabled]="form.invalid"
-        (click)="createCustomer()"
+        (click)="save()"
       >
-        Salvar
+        {{ isEditMode ? "Atualizar" : "Salvar" }}
       </button>
     </div>
   </div>
