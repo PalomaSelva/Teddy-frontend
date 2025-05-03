@@ -13,6 +13,7 @@ import {
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,5 +23,6 @@ export const appConfig: ApplicationConfig = {
     provideEnvironmentNgxMask(),
     provideNgxMask(),
     importProvidersFrom(NgxSpinnerModule.forRoot(/*config*/)),
+    provideAnimationsAsync(),
   ],
 };
