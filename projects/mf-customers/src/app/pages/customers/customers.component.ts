@@ -11,6 +11,7 @@ import { ModalDeleteComponent } from '../../shared/components/modal-delete/modal
 import { PaginationComponent } from '../../shared/components/pagination/pagination.component';
 
 import { CustomersService } from '../../shared/services/customers/customers.service';
+import { SelectedCustomersService } from '../../shared/services/selected-customers/selected-customers.service';
 
 import {
   CustomerRequest,
@@ -48,7 +49,8 @@ export class CustomersComponent implements OnInit {
   constructor(
     protected _customersService: CustomersService,
     private spinner: NgxSpinnerService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private selectedCustomersService: SelectedCustomersService
   ) {}
 
   ngOnInit(): void {
@@ -136,6 +138,9 @@ export class CustomersComponent implements OnInit {
     this._customersService.deleteCustomer(customerId).subscribe({
       next: () => {
         this.handleSuccessfulDeletion();
+        this.selectedCustomersService.toggleCustomer({
+          id: customerId,
+        } as CustomerResponse);
       },
       error: (error) => {
         this.handleDeletionError(error);
