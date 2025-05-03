@@ -6,3 +6,9 @@ export interface CustomerResponse {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface CustomerRequest {
+  name: string;
+  salary: number;
+  companyValuation: number;
+}
