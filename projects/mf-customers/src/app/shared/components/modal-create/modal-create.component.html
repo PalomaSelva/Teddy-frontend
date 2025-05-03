@@ -7,52 +7,44 @@
         class="btn-close"
         data-bs-dismiss="modal"
         aria-label="Close"
+        #closeModal
       ></button>
     </div>
     <div class="modal-body">
-      <form [formGroup]="form">
-        <div class="mb-3">
-          <label for="name" class="form-label">Nome:</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            placeholder="Nome do cliente"
-            formControlName="name"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="salary" class="form-label">Salário:</label>
-          <input
-            type="number"
-            class="form-control"
-            id="salary"
-            placeholder="R$ 0,00"
-            formControlName="salary"
-          />
-        </div>
-        <div class="mb-3">
-          <label
-            for="companyValuation"
-            class="form-label"
-            style="text-wrap: nowrap"
-            >Valor da empresa:</label
-          >
-          <input
-            type="number"
-            class="form-control"
-            id="companyValuation"
-            placeholder="R$ 0,00"
-            formControlName="companyValuation"
-          />
-        </div>
+      <form [formGroup]="form" class="d-flex flex-column gap-3">
+        <app-input-text
+          label="Nome"
+          [control]="getControl('name')"
+          placeholder="Nome do cliente"
+        />
+
+        <app-input-text
+          label="Salário"
+          [control]="getControl('salary')"
+          placeholder="R$ 0,00"
+          [currency]="true"
+        />
+
+        <app-input-text
+          label="Valor da empresa"
+          [control]="getControl('companyValuation')"
+          placeholder="R$ 0,00"
+          [currency]="true"
+        />
       </form>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
         Cancelar
       </button>
-      <button type="button" class="btn btn-primary text-white">Salvar</button>
+      <button
+        type="button"
+        class="btn btn-primary text-white"
+        [disabled]="form.invalid"
+        (click)="createCustomer()"
+      >
+        Salvar
+      </button>
     </div>
   </div>
 </div>
