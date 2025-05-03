@@ -3,11 +3,32 @@
     <h5 class="card-title text-center">{{ item.name }}</h5>
     <div class="card-info">
       <p class="card-text text-center">
-        <strong>Salário:</strong> R$ {{ item.salary | number : "1.2-2" }}
+        <strong>Salário:</strong>
+        <span>
+          {{ item.salary.toFixed(2)
+                      | mask
+                      : 'separator.2'
+                      : {
+                        thousandSeparator: '.',
+                        decimalMarker: ',',
+                        prefix: 'R$',
+                      }
+          }}
+        </span>
       </p>
       <p class="card-text text-center">
-        <strong>Empresa:</strong> R$
-        {{ item.companyValuation | number : "1.2-2" }}
+        <strong>Empresa:</strong>
+        <span>
+          {{ item.companyValuation.toFixed(2)
+                      | mask
+                      : 'separator.2'
+                      : {
+                        thousandSeparator: '.',
+                        decimalMarker: ',',
+                        prefix: 'R$',
+                      }
+          }}
+        </span>
       </p>
     </div>
     <div class="d-flex justify-content-between gap-2">
@@ -44,17 +65,3 @@
     </div>
   </div>
 </div>
-
-<!-- Modal de exclusão -->
-<!-- <div
-  class="modal"
-  id="deleteModal"
-  tabindex="-1"
-  aria-labelledby="deleteModal"
-  aria-hidden="true"
->
-  <app-modal-delete
-    [customer]="item"
-    (deleteCustomer)="deleteCustomer(item.id)"
-  />
-</div> -->
