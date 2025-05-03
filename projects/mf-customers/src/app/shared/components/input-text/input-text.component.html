@@ -1,0 +1,23 @@
+@if (control) {
+
+<label class="form-label">{{ label }}</label>
+<input
+  [formControl]="control"
+  class="form-control"
+  (change)="change.emit($event)"
+  (input)="input.emit($event)"
+  [readOnly]="readOnly"
+  [placeholder]="placeholder"
+  [attr.maxlength]="maxlength"
+  [attr.minlength]="minlength"
+  [thousandSeparator]="maskOptions?.thousandSeparator"
+  [prefix]="currency ? maskOptions?.prefix : ''"
+  [type]="type"
+  [mask]="mask"
+  [ngClass]="{
+    'is-invalid': control.invalid && control.touched
+  }"
+/>
+@if(errorMessage && control.touched && control.invalid){
+<span class="text-danger fs-6 mt-1 d-block">{{ errorMessage }}</span>
+} }
