@@ -1,3 +1,11 @@
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="square-loader"
+  [fullScreen]="true"
+  ><p style="color: white">Loading...</p></ngx-spinner
+>
 <div class="container-fluid mt-5 px-5">
   <div class="row mb-3">
     <div class="col-12">
@@ -6,8 +14,11 @@
   </div>
   <div class="row gy-4">
     @for (customer of customers; track customer.id) {
-
-    <app-card class="col-md-4 col-lg-4 col-xl-3 col-2xl-2" [item]="customer" />
+    <app-card
+      class="col-md-4 col-lg-4 col-xl-3 col-2xl-2"
+      [item]="customer"
+      (onDelete)="openDeleteModal($event)"
+    />
     }
   </div>
   <div class="row w-100 m-auto mt-3">
@@ -49,5 +60,19 @@
   aria-labelledby="modalCreateLabel"
   aria-hidden="true"
 >
-  <app-modal-create />
+  <app-modal-create (saveCustomer)="createCustomer($event)" />
+</div>
+
+<!-- Modal de exclusão -->
+<div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  aria-labelledby="deleteModal"
+  aria-hidden="true"
+>
+  <app-modal-delete
+    [customer]="selectedCustomer"
+    (deleteCustomer)="deleteCustomer($event)"
+  />
 </div>
