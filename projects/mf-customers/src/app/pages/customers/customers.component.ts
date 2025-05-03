@@ -8,6 +8,7 @@ import '@angular/localize/init';
 import { CardComponent } from '../../shared/components/card/card.component';
 import { ModalCreateComponent } from '../../shared/components/modal-create/modal-create.component';
 import { ModalDeleteComponent } from '../../shared/components/modal-delete/modal-delete.component';
+import { PaginationComponent } from '../../shared/components/pagination/pagination.component';
 
 import { CustomersService } from '../../shared/services/customers/customers.service';
 
@@ -27,6 +28,7 @@ import { AlertService } from '../../shared/services/alert/alert.service';
     FormsModule,
     NgxSpinnerModule,
     ModalDeleteComponent,
+    PaginationComponent,
   ],
   templateUrl: './customers.component.html',
   styleUrl: './customers.component.scss',
@@ -155,5 +157,16 @@ export class CustomersComponent implements OnInit {
       return;
     }
     this.alertService.error('Erro ao excluir cliente');
+  }
+
+  onPageChange(newPage: number): void {
+    this.page = newPage;
+    this.getCustomers();
+  }
+
+  onItemsPerPageChange(newItemsPerPage: number): void {
+    this.itemsPerPage = newItemsPerPage;
+    this.page = 1; // Reset to first page when changing items per page
+    this.getCustomers();
   }
 }

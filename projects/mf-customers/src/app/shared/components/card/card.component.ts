@@ -1,13 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CustomerResponse } from '../../interfaces/customer.interface';
-import { ModalCreateComponent } from '../modal-create/modal-create.component';
-import { ModalDeleteComponent } from '../modal-delete/modal-delete.component';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [CommonModule, ModalDeleteComponent],
+  imports: [CommonModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
 })

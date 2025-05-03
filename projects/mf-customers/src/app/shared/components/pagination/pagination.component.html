@@ -1,0 +1,23 @@
+<div class="row mt-3">
+  <div class="col-6 gap-2 d-flex align-items-center">
+    <p style="text-wrap: nowrap" class="p-0 m-0">Itens por página:</p>
+    <select
+      class="form-select"
+      style="width: 80px"
+      aria-label="Default select example"
+      [(ngModel)]="itemsPerPage"
+      (ngModelChange)="onItemsPerPageChange($event)"
+    >
+      @for (item of itemsPerPageOptions; track item) {
+      <option [value]="item">{{ item }}</option>
+      }
+    </select>
+  </div>
+  <ngb-pagination
+    [collectionSize]="totalPages"
+    [(page)]="page"
+    [maxSize]="5"
+    class="d-flex justify-content-end align-items-end col-6"
+    (pageChange)="onPageChange($event)"
+  />
+</div>
