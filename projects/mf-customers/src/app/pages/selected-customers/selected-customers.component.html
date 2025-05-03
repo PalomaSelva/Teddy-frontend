@@ -14,7 +14,11 @@
   </div>
   <div class="row gy-4">
     @for (customer of customers; track customer.id) {
-    <app-card class="col-md-4 col-lg-4 col-xl-3 col-2xl-2" [item]="customer" />
+    <app-card
+      class="col-md-4 col-lg-4 col-xl-3 col-2xl-2"
+      [item]="customer"
+      [isSelectedCustomersPage]="true"
+    />
     }
   </div>
   <div class="row w-100 m-auto mt-3">

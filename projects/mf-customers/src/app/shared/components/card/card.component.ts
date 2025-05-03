@@ -12,6 +12,7 @@ import { SelectedCustomersService } from '../../services/selected-customers/sele
 })
 export class CardComponent {
   @Input() item!: CustomerResponse;
+  @Input() isSelectedCustomersPage = false;
   @Output() onDelete = new EventEmitter<CustomerResponse>();
   @Output() onEdit = new EventEmitter<CustomerResponse>();
 
