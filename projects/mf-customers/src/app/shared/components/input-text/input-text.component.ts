@@ -39,8 +39,8 @@ export class InputTextComponent {
     if (changes['currency']) {
       this.mask = 'separator.2';
       this.maskOptions = {
-        separator: '.',
-        thousandSeparator: ',',
+        separator: ',',
+        thousandSeparator: '.',
         prefix: 'R$ ',
         allowNegative: false,
       };
