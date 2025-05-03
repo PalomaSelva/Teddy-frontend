@@ -56,7 +56,8 @@
               }
             ],
             "styles": [
-              "projects/mf-login/src/styles.scss"
+              "projects/mf-login/src/styles.scss",
+              "node_modules/ngx-spinner/animations/square-loader.css"
             ],
             "scripts": []
           }
@@ -80,7 +81,8 @@
               }
             ],
             "styles": [
-              "projects/mf-login/src/styles.scss"
+              "projects/mf-login/src/styles.scss",
+              "node_modules/ngx-spinner/animations/square-loader.css"
             ],
             "scripts": []
           },
@@ -178,7 +180,8 @@
               }
             ],
             "styles": [
-              "projects/host/src/styles.scss"
+              "projects/host/src/styles.scss",
+              "node_modules/ngx-spinner/animations/square-loader.css"
             ],
             "scripts": []
           }
@@ -202,7 +205,8 @@
               }
             ],
             "styles": [
-              "projects/host/src/styles.scss"
+              "projects/host/src/styles.scss",
+              "node_modules/ngx-spinner/animations/square-loader.css"
             ],
             "scripts": []
           },

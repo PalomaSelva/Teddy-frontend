@@ -24,6 +24,8 @@
     "@softarc/native-federation-node": "^2.0.10",
     "bootstrap": "^5.3.5",
     "es-module-shims": "^1.5.12",
+    "ngx-mask": "^19.0.6",
+    "ngx-spinner": "^19.0.0",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.19.1",
     "tslib": "^2.3.0",
