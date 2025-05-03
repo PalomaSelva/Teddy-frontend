@@ -9,6 +9,8 @@ module.exports = withNativeFederation({
   exposes: {
     "./Customers":
       "./projects/mf-customers/src/app/pages/customers/customers.component.ts",
+    "./SelectedCustomers":
+      "./projects/mf-customers/src/app/pages/selected-customers/selected-customers.component.ts",
   },
 
   shared: {

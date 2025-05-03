@@ -21,4 +21,12 @@ export const routes: Routes = [
       ),
     canActivate: [authGuard],
   },
+  {
+    path: 'selected-customers',
+    loadComponent: () =>
+      loadRemoteModule('mfCustomers', './SelectedCustomers').then(
+        (m) => m.SelectedCustomersComponent
+      ),
+    canActivate: [authGuard],
+  },
 ];
