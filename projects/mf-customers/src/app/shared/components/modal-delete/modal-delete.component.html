@@ -1,0 +1,29 @@
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Excluir cliente:</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+        #closeModal
+      ></button>
+    </div>
+    <div class="modal-body">
+      <p class="mb-0 fs-6">
+        Você está prestes a excluir o cliente:
+        <span class="fw-bold">{{ customer?.name }}</span>
+      </p>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-primary w-100 text-white"
+        (click)="delete()"
+      >
+        Excluir cliente
+      </button>
+    </div>
+  </div>
+</div>
