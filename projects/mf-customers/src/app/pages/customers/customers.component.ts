@@ -70,8 +70,8 @@ export class CustomersComponent implements OnInit {
         error: (err) => {
           this.spinner.hide();
           this.alertService.error(
-            'Erro ao carregar clientes',
-            err.error.message
+            err.error.message,
+            'Erro ao carregar clientes'
           );
         },
       });
@@ -109,8 +109,8 @@ export class CustomersComponent implements OnInit {
       error: (error: HttpErrorResponse) => {
         this.spinner.hide();
         this.alertService.error(
-          'Erro ao atualizar cliente',
-          error.error.message
+          error.error.messagem,
+          'Erro ao atualizar cliente'
         );
       },
     });
@@ -128,7 +128,7 @@ export class CustomersComponent implements OnInit {
       },
       error: (error: HttpErrorResponse) => {
         this.spinner.hide();
-        this.alertService.error('Erro ao criar cliente', error.error.message);
+        this.alertService.error(error.error.message, 'Erro ao criar cliente');
       },
     });
   }
