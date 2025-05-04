@@ -14,11 +14,18 @@ import { NgxMaskPipe } from 'ngx-mask';
 export class CardComponent {
   @Input() item!: CustomerResponse;
   @Input() isSelectedCustomersPage = false;
-  @Input() selected = false;
   @Output() onDelete = new EventEmitter<CustomerResponse>();
   @Output() onEdit = new EventEmitter<CustomerResponse>();
 
-  constructor(private selectedCustomersService: SelectedCustomersService) {}
+  isSelected = false;
+
+  constructor(private selectedCustomersService: SelectedCustomersService) {
+    this.selectedCustomersService
+      .getSelectedCustomers()
+      .subscribe((customers) => {
+        this.isSelected = customers.some((c) => c.id === this.item?.id);
+      });
+  }
 
   toggleSelection(): void {
     this.selectedCustomersService.toggleCustomer(this.item);

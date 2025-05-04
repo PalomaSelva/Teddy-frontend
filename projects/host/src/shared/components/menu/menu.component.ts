@@ -11,13 +11,25 @@ import { CommonModule, TitleCasePipe } from '@angular/common';
 })
 export class MenuComponent {
   name: string = '';
+  isDarkMode = false;
 
   constructor(private router: Router) {
     this.name = localStorage.getItem('name') || '';
+    this.isDarkMode = document.body.getAttribute('data-bs-theme') === 'dark';
   }
 
   logout() {
     localStorage.removeItem('name');
     this.router.navigate(['/login']);
+  }
+
+  toggleTheme() {
+    const body = document.body;
+    const currentTheme = body.getAttribute('data-bs-theme');
+    body.setAttribute(
+      'data-bs-theme',
+      currentTheme === 'dark' ? 'light' : 'dark'
+    );
+    this.isDarkMode = !this.isDarkMode;
   }
 }

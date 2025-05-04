@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card bg-body-tertiary">
   <div class="card-body">
     <h5 class="card-title text-center">{{ item.name }}</h5>
     <div class="card-info">
@@ -34,19 +34,19 @@
     <div class="d-flex justify-content-between gap-2">
       <button
         class="btn"
-        [class.text-success]="!selected && !isSelectedCustomersPage"
-        [class.text-danger]="selected || isSelectedCustomersPage"
+        [class.text-success]="!isSelected && !isSelectedCustomersPage"
+        [class.text-danger]="isSelected || isSelectedCustomersPage"
         (click)="toggleSelection()"
       >
         <i
           class="fas"
-          [class.fa-plus]="!selected && !isSelectedCustomersPage"
-          [class.fa-minus]="selected || isSelectedCustomersPage"
+          [class.fa-plus]="!isSelected && !isSelectedCustomersPage"
+          [class.fa-minus]="isSelected || isSelectedCustomersPage"
         ></i>
       </button>
       @if (!isSelectedCustomersPage) {
       <button
-        class="btn text-dark"
+        class="btn text-secondary"
         (click)="onEdit.emit(item)"
         data-bs-toggle="modal"
         data-bs-target="#modalCreate"
