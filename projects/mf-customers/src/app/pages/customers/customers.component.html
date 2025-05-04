@@ -17,6 +17,7 @@
     <app-card
       class="col-md-4 col-lg-4 col-xl-3 col-2xl-2"
       [item]="customer"
+      [selected]="isSelected(customer)"
       (onDelete)="openDeleteModal($event)"
       (onEdit)="openEditModal($event)"
     />

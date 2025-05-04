@@ -174,4 +174,8 @@ export class CustomersComponent implements OnInit {
     this.page = 1; // Reset to first page when changing items per page
     this.getCustomers();
   }
+
+  isSelected(customer: CustomerResponse): boolean {
+    return this.selectedCustomersService.isCustomerSelected(customer.id);
+  }
 }
