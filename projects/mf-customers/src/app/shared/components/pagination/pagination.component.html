@@ -14,7 +14,8 @@
     </select>
   </div>
   <ngb-pagination
-    [collectionSize]="totalPages"
+    [collectionSize]="collectionSize"
+    [pageSize]="itemsPerPage"
     [(page)]="page"
     [maxSize]="5"
     class="d-flex justify-content-end align-items-end col-6"

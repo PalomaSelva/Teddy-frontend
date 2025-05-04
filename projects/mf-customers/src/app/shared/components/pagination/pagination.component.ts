@@ -19,6 +19,10 @@ export class PaginationComponent {
   @Output() pageChange = new EventEmitter<number>();
   @Output() itemsPerPageChange = new EventEmitter<number>();
 
+  get collectionSize() {
+    return this.totalPages * this.itemsPerPage;
+  }
+
   onPageChange(newPage: number): void {
     this.pageChange.emit(newPage);
   }

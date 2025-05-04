@@ -3,10 +3,11 @@ import { CardComponent } from '../../shared/components/card/card.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { CustomerResponse } from '../../shared/interfaces/customer.interface';
 import { SelectedCustomersService } from '../../shared/services/selected-customers/selected-customers.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-selected-customers',
-  imports: [CardComponent, NgxSpinnerModule],
+  imports: [CardComponent, NgxSpinnerModule, CommonModule],
   templateUrl: './selected-customers.component.html',
   styleUrl: './selected-customers.component.scss',
 })
