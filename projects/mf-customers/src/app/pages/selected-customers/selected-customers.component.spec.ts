@@ -5,6 +5,8 @@ import { CustomerResponse } from '../../shared/interfaces/customer.interface';
 import { of } from 'rxjs';
 import { CardComponent } from '../../shared/components/card/card.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { provideNetlifyLoader } from '@angular/common';
+import { provideNgxMask } from 'ngx-mask';
 
 describe('SelectedCustomersComponent', () => {
   let component: SelectedCustomersComponent;
@@ -38,7 +40,11 @@ describe('SelectedCustomersComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [SelectedCustomersComponent, CardComponent, NgxSpinnerModule],
-      providers: [{ provide: SelectedCustomersService, useValue: spy }],
+      providers: [
+        { provide: SelectedCustomersService, useValue: spy },
+        provideNetlifyLoader(),
+        provideNgxMask(),
+      ],
     }).compileComponents();
 
     selectedCustomersServiceSpy = TestBed.inject(
@@ -71,6 +77,14 @@ describe('SelectedCustomersComponent', () => {
   });
 
   it('should display correct customer information in cards', () => {
+    selectedCustomersServiceSpy.getSelectedCustomers.and.returnValue(
+      of(mockCustomers)
+    );
+
+    fixture = TestBed.createComponent(SelectedCustomersComponent);
+    component = fixture.componentInstance;
+
+    fixture.detectChanges();
     const cards = fixture.nativeElement.querySelectorAll('app-card');
     cards.forEach((card: Element, index: number) => {
       const customer = mockCustomers[index];
@@ -78,8 +92,17 @@ describe('SelectedCustomersComponent', () => {
     });
   });
 
-  it('should have a clear selected customers button', () => {
+  it('should have a clear selected customers button when there are selected customers', () => {
+    selectedCustomersServiceSpy.getSelectedCustomers.and.returnValue(
+      of(mockCustomers)
+    );
+
+    fixture = TestBed.createComponent(SelectedCustomersComponent);
+    component = fixture.componentInstance;
+
+    fixture.detectChanges();
     const button = fixture.nativeElement.querySelector('button');
+    console.log(button);
     expect(button).toBeTruthy();
     expect(button.textContent.trim()).toBe('Limpar clientes selecionados');
   });
