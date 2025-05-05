@@ -19,6 +19,7 @@ describe('Customers', () => {
     cy.get('#create-customer').click();
     cy.get('[data-cy="name"] input').type(nome);
     cy.get('[data-cy="salary"] input').type(salario);
+    cy.get('[data-cy="salary"] input').type(salario);
     cy.get('[data-cy="companyValuation"] input').type(valorEmpresa);
     cy.contains('button', 'Salvar').click();
 
