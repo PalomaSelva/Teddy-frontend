@@ -7,7 +7,11 @@ import Swal, { SweetAlertOptions, SweetAlertResult } from 'sweetalert2';
 export class AlertService {
   swalMixin = Swal.mixin({
     customClass: {
+      popup: 'bg-body',
       confirmButton: 'bg-primary',
+
+      title: 'text-body',
+      htmlContainer: 'text-body',
     },
     reverseButtons: true,
   });
