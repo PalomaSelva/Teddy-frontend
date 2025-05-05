@@ -271,13 +271,7 @@
             },
             "development": {
               "target": "mf-customers:esbuild:development",
-              "dev": true,
-              "fileReplacements": [
-                {
-                  "replace": "projects/mf-customers/src/environments/environment.ts",
-                  "with": "projects/mf-customers/src/environments/environment.development.ts"
-                }
-              ]
+              "dev": true
             }
           },
           "defaultConfiguration": "production"
@@ -310,7 +304,8 @@
               }
             ],
             "styles": [
-              "projects/mf-customers/src/styles.scss"
+              "projects/mf-customers/src/styles.scss",
+              "node_modules/ngx-spinner/animations/square-loader.css"
             ],
             "scripts": []
           }
@@ -335,7 +330,7 @@
             ],
             "styles": [
               "projects/mf-customers/src/styles.scss",
-              "./node_modules/bootstrap/scss/bootstrap.scss"
+              "node_modules/ngx-spinner/animations/square-loader.css"
             ],
             "scripts": []
           },
