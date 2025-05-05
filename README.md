@@ -2,6 +2,16 @@
 
 Este projeto é uma aplicação Angular que utiliza a arquitetura de Micro Frontends, permitindo o desenvolvimento e deploy independente de diferentes partes da aplicação.
 
+## 🌐 URLs
+
+### Produção
+- Aplicação: [https://v0-teddy-six.vercel.app/](https://v0-teddy-six.vercel.app/)
+
+### Desenvolvimento
+- Host: http://localhost:4200
+- MF Login: http://localhost:4201
+- MF Customers: http://localhost:4202
+
 ## 🚀 Tecnologias Utilizadas
 
 ### Core
