@@ -150,9 +150,12 @@ export class CustomersComponent implements OnInit {
     this.modalDelete.closeModal();
     this.alertService.success('Cliente excluído com sucesso');
     this.getCustomers();
-    this.selectedCustomersService.toggleCustomer({
-      id: customerId,
-    } as CustomerResponse);
+
+    if (this.selectedCustomersService.isCustomerSelected(customerId)) {
+      this.selectedCustomersService.toggleCustomer({
+        id: customerId,
+      } as CustomerResponse);
+    }
   }
 
   private handleDeletionError(error: any, customerId: number): void {
