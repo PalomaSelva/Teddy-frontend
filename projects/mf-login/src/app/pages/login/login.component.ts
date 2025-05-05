@@ -33,6 +33,7 @@ export class LoginComponent {
     if (this.form.valid) {
       const { name } = this.form.getRawValue();
       localStorage.setItem('name', name);
+      localStorage.setItem('selected_customers', JSON.stringify([]));
       this.router.navigate(['/customers']);
     }
   }
