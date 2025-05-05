@@ -1,59 +1,128 @@
-# Workspace
+# Micro Frontend Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
+Este projeto é uma aplicação Angular que utiliza a arquitetura de Micro Frontends, permitindo o desenvolvimento e deploy independente de diferentes partes da aplicação.
 
-## Development server
+## 🚀 Tecnologias Utilizadas
 
-To start a local development server, run:
+### Core
+- Angular 19
+- TypeScript
+- RxJS
+- Webpack Module Federation
 
+### UI/UX
+- Bootstrap 5
+- Font Awesome
+- Ngx Mask
+- Ngx Spinner
+- SweetAlert2
+
+### Desenvolvimento
+- ESLint
+- Prettier
+- Conventional Commits
+
+## 📋 Pré-requisitos
+
+- Node.js (versão 18 ou superior)
+- npm (versão 9 ou superior)
+- Angular CLI (versão 19)
+
+## 🔧 Instalação
+
+1. Clone o repositório:
 ```bash
-ng serve
+git clone [URL_DO_REPOSITÓRIO]
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+2. Instale as dependências:
 ```bash
-ng generate component component-name
+npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🏃‍♂️ Executando o Projeto
+
+### Desenvolvimento
+
+Para rodar o projeto em modo de desenvolvimento:
 
 ```bash
-ng generate --help
+# Inicia o host e todos os micro frontends
+npm run start:all
+
+# Ou para rodar apenas o host
+ng serve host
+
+# Para rodar apenas um micro frontend específico
+ng serve mf-login
+ng serve mf-customers
 ```
 
-## Building
+O projeto estará disponível em:
+- Host: http://localhost:4200
+- MF Login: http://localhost:4201
+- MF Customers: http://localhost:4202
 
-To build the project run:
+### Build
+
+Para criar uma build de produção:
 
 ```bash
-ng build
+# Build de todos os projetos
+npm run build:all
+
+# Build apenas do host
+npm run build:host
+
+# Build de um micro frontend específico
+npm run build:mf-login
+npm run build:mf-customers
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 🧪 Testes
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Executando os Testes
 
 ```bash
-ng test
+# Executa todos os testes
+npm run test:all
+
+# Testes de um projeto específico
+ng test host
+ng test mf-login
+ng test mf-customers
 ```
 
-## Running end-to-end tests
+### Estrutura dos Testes
 
-For end-to-end (e2e) testing, run:
+Os testes estão organizados seguindo as melhores práticas do Angular:
+- Testes unitários para serviços e componentes
+- Mocks para serviços externos
 
-```bash
-ng e2e
+## 📁 Estrutura do Projeto
+
+```
+projects/
+├── host/                 # Aplicação principal
+├── mf-login/            # Micro frontend de Login
+└── mf-customers/        # Micro frontend de Clientes
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 🔄 Fluxo de Desenvolvimento
 
-## Additional Resources
+1. Desenvolvimento local:
+   - Cada micro frontend pode ser desenvolvido independentemente
+   - Use `npm run start:all` para desenvolvimento local
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+2. Integração:
+   - Os micro frontends são integrados através do host
+   - O host gerencia o carregamento dinâmico dos módulos
+
+3. Deploy:
+   - Cada micro frontend pode ser deployado separadamente
+   - O host precisa ser atualizado com as novas versões dos micro frontends
+
+
+
+
+

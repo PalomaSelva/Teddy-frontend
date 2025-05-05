@@ -7,6 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "build:all": "concurrently \"ng build host\" \"ng build mf-login\" \"ng build mf-customers\"",
     "test:all": "concurrently \"ng test host\" \"ng test mf-login\" \"ng test mf-customers\"",
     "start:all": "concurrently \"ng serve host --port 4200\" \"ng serve mf-login --port 4201\" \"ng serve mf-customers --port 4202\""
   },
