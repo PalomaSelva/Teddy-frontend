@@ -5,6 +5,7 @@ import { CustomersService } from '../../services/customers/customers.service';
 import { InputTextComponent } from '../input-text/input-text.component';
 import { CustomerResponse } from '../../interfaces/customer.interface';
 import { of } from 'rxjs';
+import { provideNgxMask } from 'ngx-mask';
 
 describe('ModalCreateComponent', () => {
   let component: ModalCreateComponent;
@@ -30,7 +31,11 @@ describe('ModalCreateComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [ModalCreateComponent, ReactiveFormsModule, InputTextComponent],
-      providers: [FormBuilder, { provide: CustomersService, useValue: spy }],
+      providers: [
+        FormBuilder,
+        { provide: CustomersService, useValue: spy },
+        provideNgxMask(),
+      ],
     }).compileComponents();
 
     customersServiceSpy = TestBed.inject(
