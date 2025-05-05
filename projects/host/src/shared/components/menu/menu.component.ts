@@ -38,6 +38,5 @@ export class MenuComponent {
   clearSelectedCustomers() {
     localStorage.setItem('selected_customers', '[]');
     const selectedCustomers = localStorage.getItem('selected_customers');
-    console.log(selectedCustomers);
   }
 }

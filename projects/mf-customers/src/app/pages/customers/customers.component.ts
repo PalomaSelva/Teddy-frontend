@@ -138,12 +138,6 @@ export class CustomersComponent implements OnInit {
     this._customersService.deleteCustomer(customerId).subscribe({
       next: () => {
         this.handleSuccessfulDeletion(customerId);
-
-        console.log(
-          'id e users',
-          customerId,
-          this.selectedCustomersService.getSelectedCustomers()
-        );
       },
       error: (error) => {
         this.handleDeletionError(error, customerId);
