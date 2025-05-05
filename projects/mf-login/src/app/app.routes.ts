@@ -1,4 +1,10 @@
-import { loadRemoteModule } from '@angular-architects/native-federation';
 import { Routes } from '@angular/router';
-
-export const routes: Routes = [];
+const title = 'Teddy Open Finance';
+export const routes: Routes = [
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./pages/login/login.component').then((m) => m.LoginComponent),
+    title: `Login | ${title}`,
+  },
+];
