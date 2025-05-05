@@ -2,13 +2,4 @@ import { Routes } from '@angular/router';
 import { CustomersComponent } from './pages/customers/customers.component';
 import { SelectedCustomersComponent } from './pages/selected-customers/selected-customers.component';
 
-export const routes: Routes = [
-  {
-    path: '',
-    component: CustomersComponent,
-  },
-  {
-    path: 'selected-customers',
-    component: SelectedCustomersComponent,
-  },
-];
+export const routes: Routes = [];
