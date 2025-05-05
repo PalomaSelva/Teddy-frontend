@@ -91,10 +91,10 @@ npm run build:mf-customers
 
 ## 🧪 Testes
 
-### Executando os Testes
+### Executando os Testes Unitários
 
 ```bash
-# Executa todos os testes
+# Executa todos os testes unitários
 npm run test:all
 
 # Testes de um projeto específico
@@ -103,11 +103,30 @@ ng test mf-login
 ng test mf-customers
 ```
 
+### Executando os Testes E2E (Cypress)
+
+1. Inicie a aplicação (todos os micro frontends):
+```bash
+npm run start:all
+```
+
+2. Em outro terminal, rode o Cypress:
+```bash
+# Para abrir a interface do Cypress
+npm run cypress:open
+
+# Para rodar os testes E2E em modo headless
+npm run cypress:run
+```
+
+Os testes E2E estão localizados em `cypress/e2e/`.
+
 ### Estrutura dos Testes
 
 Os testes estão organizados seguindo as melhores práticas do Angular:
 - Testes unitários para serviços e componentes
 - Mocks para serviços externos
+- Testes E2E com Cypress para fluxos completos da aplicação
 
 ## 📁 Estrutura do Projeto
 
