@@ -3,6 +3,8 @@ import { Routes } from '@angular/router';
 import { authGuard } from '../core/guards/auth.guard';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
+const title = 'Teddy Open Finance';
+
 export const routes: Routes = [
   {
     path: '',
@@ -13,6 +15,7 @@ export const routes: Routes = [
     path: 'login',
     loadComponent: () =>
       loadRemoteModule('mfLogin', './Component').then((m) => m.LoginComponent),
+    title: `Login | ${title}`,
   },
   {
     path: 'customers',
@@ -21,6 +24,7 @@ export const routes: Routes = [
         (m) => m.CustomersComponent
       ),
     canActivate: [authGuard],
+    title: `Clientes | ${title}`,
   },
   {
     path: 'selected-customers',
@@ -29,6 +33,7 @@ export const routes: Routes = [
         (m) => m.SelectedCustomersComponent
       ),
     canActivate: [authGuard],
+    title: `Selecionar Clientes | ${title}`,
   },
   {
     path: '404',
