@@ -3,7 +3,7 @@ import { CardComponent } from './card.component';
 import { SelectedCustomersService } from '../../services/selected-customers/selected-customers.service';
 import { CustomerResponse } from '../../interfaces/customer.interface';
 import { of } from 'rxjs';
-import { NgxMaskPipe } from 'ngx-mask';
+import { NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 describe('CardComponent', () => {
   let component: CardComponent;
@@ -28,7 +28,10 @@ describe('CardComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [CardComponent, NgxMaskPipe],
-      providers: [{ provide: SelectedCustomersService, useValue: spy }],
+      providers: [
+        { provide: SelectedCustomersService, useValue: spy },
+        provideNgxMask(),
+      ],
     }).compileComponents();
 
     selectedCustomersServiceSpy = TestBed.inject(
