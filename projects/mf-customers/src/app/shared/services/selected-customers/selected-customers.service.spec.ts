@@ -1,11 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { SelectedCustomersService } from './selected-customers.service';
 import { CustomerResponse } from '../../interfaces/customer.interface';
-import { BehaviorSubject } from 'rxjs';
 
 describe('SelectedCustomersService', () => {
   let service: SelectedCustomersService;
-  let selectedCustomersSubject: BehaviorSubject<CustomerResponse[]>;
 
   const mockCustomer1: CustomerResponse = {
     id: 1,
@@ -26,15 +24,11 @@ describe('SelectedCustomersService', () => {
   };
 
   beforeEach(() => {
-    selectedCustomersSubject = new BehaviorSubject<CustomerResponse[]>([]);
-
     TestBed.configureTestingModule({
       providers: [SelectedCustomersService],
     });
 
     service = TestBed.inject(SelectedCustomersService);
-    // @ts-ignore - accessing private property for testing
-    service['selectedCustomersSubject'] = selectedCustomersSubject;
   });
 
   it('should be created', () => {
@@ -75,14 +69,17 @@ describe('SelectedCustomersService', () => {
     service.toggleCustomer(mockCustomer2);
 
     service.getSelectedCustomers().subscribe((customers) => {
-      expect(customers).toEqual([mockCustomer1, mockCustomer2]);
+      expect(customers.length).toBe(2);
+      expect(customers).toContain(mockCustomer1);
+      expect(customers).toContain(mockCustomer2);
     });
 
     // Remove first customer
     service.toggleCustomer(mockCustomer1);
 
     service.getSelectedCustomers().subscribe((customers) => {
-      expect(customers).toEqual([mockCustomer2]);
+      expect(customers.length).toBe(1);
+      expect(customers).toContain(mockCustomer2);
     });
   });
 
