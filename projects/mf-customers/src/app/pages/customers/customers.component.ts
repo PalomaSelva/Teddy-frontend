@@ -137,28 +137,35 @@ export class CustomersComponent implements OnInit {
     this.spinner.show();
     this._customersService.deleteCustomer(customerId).subscribe({
       next: () => {
-        this.handleSuccessfulDeletion();
-        this.selectedCustomersService.toggleCustomer({
-          id: customerId,
-        } as CustomerResponse);
+        this.handleSuccessfulDeletion(customerId);
+
+        console.log(
+          'id e users',
+          customerId,
+          this.selectedCustomersService.getSelectedCustomers()
+        );
       },
       error: (error) => {
-        this.handleDeletionError(error);
+        this.handleDeletionError(error, customerId);
       },
     });
   }
 
-  private handleSuccessfulDeletion(): void {
+  private handleSuccessfulDeletion(customerId: number): void {
     this.spinner.hide();
     this.modalDelete.closeModal();
     this.alertService.success('Cliente excluído com sucesso');
     this.getCustomers();
+    this.selectedCustomersService.toggleCustomer({
+      id: customerId,
+    } as CustomerResponse);
   }
 
-  private handleDeletionError(error: any): void {
+  private handleDeletionError(error: any, customerId: number): void {
     this.spinner.hide();
     if (error.status === 200) {
-      this.handleSuccessfulDeletion();
+      this.handleSuccessfulDeletion(customerId);
+
       return;
     }
     this.alertService.error('Erro ao excluir cliente');

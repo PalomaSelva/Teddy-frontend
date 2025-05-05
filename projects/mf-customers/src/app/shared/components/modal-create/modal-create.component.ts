@@ -78,7 +78,15 @@ export class ModalCreateComponent {
     this.isEditMode = false;
     this.customerToEdit = null;
     this.form.reset();
-    console.log(this.customerToEdit, 'reset');
+  }
+
+  resetToInitialState() {
+    this.isEditMode = false;
+    this.form.reset({
+      name: this.customerToEdit?.name || '',
+      salary: this.customerToEdit?.salary || '',
+      companyValuation: this.customerToEdit?.companyValuation || '',
+    });
   }
 
   getControl(control: string) {
