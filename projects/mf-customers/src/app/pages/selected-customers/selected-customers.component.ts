@@ -22,6 +22,7 @@ export class SelectedCustomersComponent {
     this.selectedCustomersService
       .getSelectedCustomers()
       .subscribe((customers) => {
+        console.log(customers);
         this.customers = customers;
       });
   }

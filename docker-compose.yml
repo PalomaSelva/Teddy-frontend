@@ -2,19 +2,21 @@ version: "3.8"
 services:
   host:
     build:
-      context: ./projects/host
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: projects/host/Dockerfile
     ports:
       - "8080:80"
+
   mf-login:
     build:
-      context: ./projects/mf-login
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: projects/mf-login/Dockerfile
     ports:
       - "8081:80"
+
   mf-customers:
     build:
-      context: ./projects/mf-customers
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: projects/mf-customers/Dockerfile
     ports:
       - "8082:80"
