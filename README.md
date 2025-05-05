@@ -19,7 +19,7 @@ Este projeto é um desafio técnico para a Teddy Open Finance, implementado como
 - Angular 19
 - TypeScript
 - RxJS
-- Webpack Module Federation
+- @angular-architects/native-federation
 
 ### UI/UX
 - Bootstrap 5
