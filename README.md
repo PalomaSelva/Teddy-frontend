@@ -1,6 +1,7 @@
-# Micro Frontend Angular
+# Micro Frontend Angular - Teddy Open Finance
 
-Este projeto é uma aplicação Angular que utiliza a arquitetura de Micro Frontends, permitindo o desenvolvimento e deploy independente de diferentes partes da aplicação.
+Este projeto é um desafio técnico para a Teddy Open Finance, implementado como uma aplicação Angular utilizando a arquitetura de Micro Frontends. O objetivo é demonstrar conhecimentos em desenvolvimento frontend, arquitetura de software e boas práticas de programação.
+
 
 ## 🌐 URLs
 
@@ -132,9 +133,22 @@ Os testes estão organizados seguindo as melhores práticas do Angular:
 
 ```
 projects/
-├── host/                 # Aplicação principal
+├── host/                 # Aplicação principal (Container)
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── components/    # Componentes compartilhados
+│   │   │   └── services/      # Serviços compartilhados
+│   │   └── assets/           # Recursos estáticos
 ├── mf-login/            # Micro frontend de Login
+│   ├── src/
+│   │   └── app/
+│   │       ├── components/    # Componentes de login
+│   │       └── services/      # Serviços de autenticação
 └── mf-customers/        # Micro frontend de Clientes
+    ├── src/
+    │   └── app/
+    │       ├── components/    # Componentes de gerenciamento de clientes
+    │       └── services/      # Serviços de clientes
 ```
 
 ## 🔄 Fluxo de Desenvolvimento
@@ -142,14 +156,27 @@ projects/
 1. Desenvolvimento local:
    - Cada micro frontend pode ser desenvolvido independentemente
    - Use `npm run start:all` para desenvolvimento local
+   - Implemente as funcionalidades seguindo os requisitos especificados
 
 2. Integração:
    - Os micro frontends são integrados através do host
    - O host gerencia o carregamento dinâmico dos módulos
+   - Implemente a navegação entre as telas conforme especificado
 
 3. Deploy:
    - Cada micro frontend pode ser deployado separadamente
    - O host precisa ser atualizado com as novas versões dos micro frontends
+   - Garanta que todas as funcionalidades estejam operacionais em produção
+
+## 🎯 Critérios de Avaliação
+
+- Implementação correta da arquitetura de Micro Frontends
+- Qualidade do código e organização do projeto
+- Funcionalidades implementadas conforme especificado
+- Experiência do usuário e interface responsiva
+- Tratamento de erros e validações
+- Testes unitários e E2E
+- Documentação do código e do projeto
 
 
 
