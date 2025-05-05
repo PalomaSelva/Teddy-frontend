@@ -1,5 +1,5 @@
-<div class="row mt-3">
-  <div class="col-6 gap-2 d-flex align-items-center">
+<div class="row align-items-center mt-3">
+  <div class="col-12 col-md-6 gap-2 d-flex align-items-center mb-3">
     <p style="text-wrap: nowrap" class="p-0 m-0">Itens por página:</p>
     <select
       class="form-select"
@@ -18,7 +18,7 @@
     [pageSize]="itemsPerPage"
     [(page)]="page"
     [maxSize]="5"
-    class="d-flex justify-content-end align-items-end col-6"
+    class="d-flex justify-content-start justify-content-md-end align-items-baseline col-12 col-md-6"
     (pageChange)="onPageChange($event)"
   />
 </div>

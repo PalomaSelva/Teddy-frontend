@@ -11,3 +11,7 @@ $theme-colors: map-merge(
     "primary": $primary,
   )
 );
+
+ngb-pagination ul {
+  margin: 0 !important;
+}
