@@ -1,6 +1,7 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { SelectedCustomersService } from './selected-customers.service';
 import { CustomerResponse } from '../../interfaces/customer.interface';
+import { firstValueFrom } from 'rxjs';
 
 describe('SelectedCustomersService', () => {
   let service: SelectedCustomersService;
@@ -27,72 +28,53 @@ describe('SelectedCustomersService', () => {
     TestBed.configureTestingModule({
       providers: [SelectedCustomersService],
     });
-
     service = TestBed.inject(SelectedCustomersService);
+    localStorage.clear(); // Clear localStorage before each test
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should initialize with empty selected customers', () => {
-    service.getSelectedCustomers().subscribe((customers) => {
-      expect(customers).toEqual([]);
-    });
+  it('should initialize with empty selected customers', async () => {
+    const customers = await firstValueFrom(service.getSelectedCustomers());
+    expect(customers).toEqual([]);
   });
 
-  it('should add customer when not in selected list', () => {
+  it('should add customer when not in selected list', async () => {
     service.toggleCustomer(mockCustomer1);
-
-    service.getSelectedCustomers().subscribe((customers) => {
-      expect(customers).toEqual([mockCustomer1]);
-    });
+    const customers = await firstValueFrom(service.getSelectedCustomers());
+    expect(customers).toEqual([mockCustomer1]);
   });
 
-  it('should remove customer when already in selected list', () => {
-    // First add the customer
+  it('should handle multiple customers correctly', async () => {
+    // Seleciona um
     service.toggleCustomer(mockCustomer1);
-
-    // Then remove it
-    service.toggleCustomer(mockCustomer1);
-
-    service.getSelectedCustomers().subscribe((customers) => {
-      expect(customers).toEqual([]);
-    });
-  });
-
-  it('should handle multiple customers correctly', () => {
-    // Add first customer
-    service.toggleCustomer(mockCustomer1);
-
-    // Add second customer
+    // Seleciona outro
     service.toggleCustomer(mockCustomer2);
 
-    service.getSelectedCustomers().subscribe((customers) => {
-      expect(customers.length).toBe(2);
-      expect(customers).toContain(mockCustomer1);
-      expect(customers).toContain(mockCustomer2);
-    });
+    // Verifica se os dois estão selecionados
+    let customers = await firstValueFrom(service.getSelectedCustomers());
+    expect(customers.length).toBe(2);
+    expect(customers).toContain(mockCustomer1);
+    expect(customers).toContain(mockCustomer2);
 
-    // Remove first customer
+    // Remove um
     service.toggleCustomer(mockCustomer1);
 
-    service.getSelectedCustomers().subscribe((customers) => {
-      expect(customers.length).toBe(1);
-      expect(customers).toContain(mockCustomer2);
-    });
+    // Verifica se o outro está selecionado
+    customers = await firstValueFrom(service.getSelectedCustomers());
+    expect(customers.length).toBe(1);
+    expect(customers).toContain(mockCustomer2);
   });
 
-  it('should clear all selected customers', () => {
-    // Add customers
+  it('should clear all selected customers', async () => {
     service.toggleCustomer(mockCustomer1);
     service.toggleCustomer(mockCustomer2);
 
-    // Clear all
     service.clearSelection();
 
-    service.getSelectedCustomers().subscribe((customers) => {
-      expect(customers).toEqual([]);
-    });
+    const customers = await firstValueFrom(service.getSelectedCustomers());
+    expect(customers).toEqual([]);
   });
 });

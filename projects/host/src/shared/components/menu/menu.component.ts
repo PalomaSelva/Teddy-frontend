@@ -20,6 +20,8 @@ export class MenuComponent {
 
   logout() {
     localStorage.removeItem('name');
+    localStorage.removeItem('selected_customers');
+    this.clearSelectedCustomers();
     this.router.navigate(['/login']);
   }
 
@@ -31,5 +33,11 @@ export class MenuComponent {
       currentTheme === 'dark' ? 'light' : 'dark'
     );
     this.isDarkMode = !this.isDarkMode;
+  }
+
+  clearSelectedCustomers() {
+    localStorage.setItem('selected_customers', '[]');
+    const selectedCustomers = localStorage.getItem('selected_customers');
+    console.log(selectedCustomers);
   }
 }
