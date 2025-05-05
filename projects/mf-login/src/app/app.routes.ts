@@ -7,4 +7,9 @@ export const routes: Routes = [
       import('./pages/login/login.component').then((m) => m.LoginComponent),
     title: `Login | ${title}`,
   },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'login',
+  },
 ];

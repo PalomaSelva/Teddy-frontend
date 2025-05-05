@@ -1,4 +1,4 @@
 {
-  "mfLogin": "http://localhost:4201/remoteEntry.json",
+  "mfLogin": "https://teddy-frontend.vercel.app/remoteEntry.js",
   "mfCustomers": "http://localhost:4202/remoteEntry.json"
 }
