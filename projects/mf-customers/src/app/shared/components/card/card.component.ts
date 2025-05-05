@@ -19,7 +19,9 @@ export class CardComponent {
 
   isSelected = false;
 
-  constructor(private selectedCustomersService: SelectedCustomersService) {
+  constructor(private selectedCustomersService: SelectedCustomersService) {}
+
+  ngOnInit() {
     this.selectedCustomersService
       .getSelectedCustomers()
       .subscribe((customers) => {

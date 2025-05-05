@@ -21,4 +21,8 @@ export class SelectedCustomersComponent {
         this.customers = customers;
       });
   }
+
+  clearSelectedCustomers() {
+    this.selectedCustomersService.clearSelection();
+  }
 }

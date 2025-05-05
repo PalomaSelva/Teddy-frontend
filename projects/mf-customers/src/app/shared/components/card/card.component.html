@@ -34,6 +34,7 @@
     <div class="d-flex justify-content-between gap-2">
       <button
         class="btn"
+        id="toggle-selection"
         [class.text-success]="!isSelected && !isSelectedCustomersPage"
         [class.text-danger]="isSelected || isSelectedCustomersPage"
         (click)="toggleSelection()"

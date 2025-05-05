@@ -29,8 +29,8 @@
   <div class="row w-100 m-auto mt-3">
     <button
       class="btn btn-outline-primary col-12"
-      data-bs-toggle="modal"
-      data-bs-target="#modalCreate"
+      id="clear-selected-customers"
+      (click)="clearSelectedCustomers()"
     >
       Limpar clientes selecionados
     </button>

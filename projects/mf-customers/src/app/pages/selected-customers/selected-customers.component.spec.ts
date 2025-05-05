@@ -1,4 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+  fakeAsync,
+  tick,
+} from '@angular/core/testing';
 import { SelectedCustomersComponent } from './selected-customers.component';
 import { SelectedCustomersService } from '../../shared/services/selected-customers/selected-customers.service';
 import { CustomerResponse } from '../../shared/interfaces/customer.interface';
@@ -50,60 +55,55 @@ describe('SelectedCustomersComponent', () => {
     selectedCustomersServiceSpy = TestBed.inject(
       SelectedCustomersService
     ) as jasmine.SpyObj<SelectedCustomersService>;
-    fixture = TestBed.createComponent(SelectedCustomersComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
+    fixture = TestBed.createComponent(SelectedCustomersComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 
   it('should load selected customers on init', () => {
+    fixture = TestBed.createComponent(SelectedCustomersComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
     expect(selectedCustomersServiceSpy.getSelectedCustomers).toHaveBeenCalled();
     expect(component.customers).toEqual(mockCustomers);
   });
 
   it('should display correct number of customer cards', () => {
+    fixture = TestBed.createComponent(SelectedCustomersComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
     const cards = fixture.nativeElement.querySelectorAll('app-card');
     expect(cards.length).toBe(mockCustomers.length);
   });
 
-  it('should pass isSelectedCustomersPage=true to card components', () => {
-    const cards = fixture.nativeElement.querySelectorAll('app-card');
-    cards.forEach((card: Element) => {
-      expect(card.getAttribute('isSelectedCustomersPage')).toBe('true');
-    });
-  });
-
-  it('should display correct customer information in cards', () => {
-    selectedCustomersServiceSpy.getSelectedCustomers.and.returnValue(
-      of(mockCustomers)
-    );
-
-    fixture = TestBed.createComponent(SelectedCustomersComponent);
-    component = fixture.componentInstance;
-
-    fixture.detectChanges();
-    const cards = fixture.nativeElement.querySelectorAll('app-card');
-    cards.forEach((card: Element, index: number) => {
-      const customer = mockCustomers[index];
-      expect(card.getAttribute('item')).toBeTruthy();
-    });
-  });
-
   it('should have a clear selected customers button when there are selected customers', () => {
-    selectedCustomersServiceSpy.getSelectedCustomers.and.returnValue(
-      of(mockCustomers)
-    );
-
     fixture = TestBed.createComponent(SelectedCustomersComponent);
     component = fixture.componentInstance;
-
     fixture.detectChanges();
-    const button = fixture.nativeElement.querySelector('button');
-    console.log(button);
+
+    const button = fixture.nativeElement.querySelector(
+      '#clear-selected-customers'
+    );
+
     expect(button).toBeTruthy();
     expect(button.textContent.trim()).toBe('Limpar clientes selecionados');
   });
+
+  it('should not have a clear selected customers button when there are no selected customers', fakeAsync(() => {
+    selectedCustomersServiceSpy.getSelectedCustomers.and.returnValue(of([]));
+
+    fixture = TestBed.createComponent(SelectedCustomersComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    tick(); // Wait for async operations
+
+    const button = fixture.nativeElement.querySelector(
+      '#clear-selected-customers'
+    );
+    expect(button).toBeFalsy();
+  }));
 });

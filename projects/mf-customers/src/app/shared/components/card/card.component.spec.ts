@@ -47,7 +47,7 @@ describe('CardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialize with isSelected as false', () => {
+  it('should initialize with isSelected as false when there are no selected customers', () => {
     expect(component.isSelected).toBeFalse();
   });
 
@@ -55,7 +55,11 @@ describe('CardComponent', () => {
     selectedCustomersServiceSpy.getSelectedCustomers.and.returnValue(
       of([mockCustomer])
     );
+    component.ngOnInit();
     fixture.detectChanges();
+    const button = fixture.nativeElement.querySelector('#toggle-selection');
+    button.click();
+
     expect(component.isSelected).toBeTrue();
   });
 
